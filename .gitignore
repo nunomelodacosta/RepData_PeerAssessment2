@@ -41,3 +41,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+repdata-peer2_doc-NCDC Storm Events-FAQ Page.pdf
+*.pdf
+StormData.csv.bz2
+*.RData
+StormDataAnalysis_cache/html/read data_42f324de7cfd845f77eb76bdf0018409.rdb
+*.rdx

@@ -1,0 +1,32 @@
+---
+title: "Storms and other severe weather events and imapcts"
+author: "Nuno Melo"
+date: "August 18, 2015"
+output: 
+  html_document:
+    keep_md: true
+---
+
+```{r load data}
+if (!file.exists("StormData.csv.bz2"))
+        download.file("http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2",
+                      "StormData.csv.bz2", quiet = FALSE, mode = "wb")
+
+```
+
+```{r read data, cache = TRUE}
+data <- read.csv(bzfile("StormData.csv.bz2"))
+
+```
+
+## View the data summary
+```{r Visualize data and NAs}
+str(data)
+summary(data)
+```
+The variables included in this dataset are:
+
+**Note**:  
+1.  There are `r nrow(data)` observations  
+2.  `r ncol(data)` variables  
+3.  `r sum(is.na(data$steps))` observations with missing data  
