@@ -1,0 +1,76 @@
+---
+title: Health and economic impact analysys report of storms and other severe weather
+  events, based on NOAA storm database
+author: "Nuno Melo"
+date: "August 18, 2015"
+output:
+  html_document:
+    keep_md: yes
+    number_sections: yes
+    toc: yes
+  pdf_document: default
+---
+
+# Synopsis  
+**describes and summarizes your analysis in at most 10 complete sentences**  
+In this report we aim to describe the economic and health impact caused by storms and other severe weather events, based on NOAA storm database. In particular it answers two questions:  
+
+1. which types of events are most harmful to population health?
+2. which types of events have the greatest economic consequences?
+
+# Data description
+The data for this analysys was downloaded from the Coursera web [site](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2in) [47Mb]. It is a comma-separated-value file compressed via the bzip2 algorithm to reduce its size.
+
+The events in the database start in the year 1950 and end in November 2011. In the earlier years of the database there are generally fewer events recorded, most likely due to a lack of good records. More recent years should be considered more complete. There is also some documentation of the database available. Here you will find how some of the variables are constructed/defined. See below:  
+
+* [National Weather Service Storm Data Documentation](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf)
+
+*  [National Climatic Data Center Storm Events FAQ](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf)
+
+# Data Processing  
+We first load our required R packages
+
+## Loading required packages
+```{r load packages}
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(ggvis)
+library(xtable)
+```
+
+## R Session Software environment used in the analysis
+This is the information about R, the OS and attached or loaded packages
+```{r SW Environment}
+sessionInfo()
+```
+
+## Downloading data
+The name of the file containing the data is *StormData.csv.bz2* and will be downloaded directly, from the Coursera web [site](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2in) [47Mb], to your working directory, in case the file does not already exists
+
+
+```{r download data}
+if (!file.exists("StormData.csv.bz2"))
+        download.file("http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2",
+                      "StormData.csv.bz2", quiet = FALSE, mode = "wb")
+
+```
+
+## Reading the *StormData.csv.bz2* in csv format into R
+```{r read data, cache=TRUE}
+
+data <- read.csv("StormData.csv.bz2")
+```
+
+## Checking the data 
+After reading the data we check the raw data summary info, the first and last few rows 
+```{r checking the data, cache = TRUE}
+glimpse(data)
+head(data) 
+tail(data)
+```
+
+
+
+
+
